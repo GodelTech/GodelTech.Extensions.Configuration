@@ -34,12 +34,26 @@ namespace GodelTech.Extensions.Configuration.IntegrationTests
         }
 
         [Fact]
-        public void GetProjectPath_WhenProjectNotFound_ThrowsDirectoryNotFoundException()
+        public void GetProjectPath_WhenDirectoryNotFound_ThrowsDirectoryNotFoundException()
         {
             // Arrange & Act & Assert
             var exception = Assert.Throws<DirectoryNotFoundException>(
                 () => ProjectHelpers.GetProjectPath(
                     "incorrect",
+                    typeof(ProjectHelpers).GetTypeInfo().Assembly
+                )
+            );
+
+            Assert.Equal($"Project root could not be located using the application root {_applicationBasePath}.", exception.Message);
+        }
+
+        [Fact]
+        public void GetProjectPath_WhenProjectNotFound_ThrowsDirectoryNotFoundException()
+        {
+            // Arrange & Act & Assert
+            var exception = Assert.Throws<DirectoryNotFoundException>(
+                () => ProjectHelpers.GetProjectPath(
+                    Path.Combine("src", "GodelTech.Extensions.Configuration"),
                     typeof(ProjectHelpers).GetTypeInfo().Assembly
                 )
             );
