@@ -23,7 +23,7 @@ namespace GodelTech.Extensions.Configuration.IntegrationTests
             if (string.IsNullOrWhiteSpace(path))
             {
                 path = new Regex(@"\S+\\GodelTech.Extensions.Configuration.IntegrationTests").Match(_applicationBasePath).Value;
-                path = path.Replace(@"\test\GodelTech.Extensions.Configuration.IntegrationTests", string.Empty);
+                path = path.Replace(@"\test\GodelTech.Extensions.Configuration.IntegrationTests", string.Empty, StringComparison.InvariantCulture);
             }
 
             // Act & Assert

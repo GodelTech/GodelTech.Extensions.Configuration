@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 
+[assembly: CLSCompliant(true)]
 namespace GodelTech.Extensions.Configuration
 {
     /// <summary>
