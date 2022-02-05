@@ -19,11 +19,21 @@ namespace GodelTech.Extensions.Configuration.IntegrationTests
         public void GetProjectPath_Success()
         {
             // Arrange
-            var path = new Regex(@"\S+\\GodelTech.Extensions.Configuration\\").Match(_applicationBasePath).Value;
+            var path = new Regex($@"\S+{Path.DirectorySeparatorChar}GodelTech.Extensions.Configuration{Path.DirectorySeparatorChar}")
+                .Match(_applicationBasePath)
+                .Value;
+
             if (string.IsNullOrWhiteSpace(path))
             {
-                path = new Regex(@"\S+\\GodelTech.Extensions.Configuration.IntegrationTests").Match(_applicationBasePath).Value;
-                path = path.Replace(@"\test\GodelTech.Extensions.Configuration.IntegrationTests", string.Empty, StringComparison.InvariantCulture);
+                path = new Regex($@"\S+{Path.DirectorySeparatorChar}GodelTech.Extensions.Configuration.IntegrationTests")
+                    .Match(_applicationBasePath)
+                    .Value;
+
+                path = path.Replace(
+                    Path.Combine("test", "GodelTech.Extensions.Configuration.IntegrationTests"),
+                    string.Empty,
+                    StringComparison.InvariantCulture
+                );
             }
 
             // Act & Assert
