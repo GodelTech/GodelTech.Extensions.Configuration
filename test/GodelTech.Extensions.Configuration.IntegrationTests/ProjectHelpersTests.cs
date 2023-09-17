@@ -19,13 +19,18 @@ namespace GodelTech.Extensions.Configuration.IntegrationTests
         public void GetProjectPath_Success()
         {
             // Arrange
-            var path = new Regex($@"\S+{Path.DirectorySeparatorChar}GodelTech.Extensions.Configuration{Path.DirectorySeparatorChar}")
+            var directorySeparatorChar = $"{Path.DirectorySeparatorChar}";
+            directorySeparatorChar = directorySeparatorChar == @"\"
+                ? @"\\"
+                : directorySeparatorChar;
+
+            var path = new Regex($@"\S+{directorySeparatorChar}GodelTech.Extensions.Configuration{directorySeparatorChar}")
                 .Match(_applicationBasePath)
                 .Value;
 
             if (string.IsNullOrWhiteSpace(path))
             {
-                path = new Regex($@"\S+{Path.DirectorySeparatorChar}GodelTech.Extensions.Configuration.IntegrationTests")
+                path = new Regex($@"\S+{directorySeparatorChar}GodelTech.Extensions.Configuration.IntegrationTests")
                     .Match(_applicationBasePath)
                     .Value;
 
