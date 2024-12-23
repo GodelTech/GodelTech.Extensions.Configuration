@@ -1,6 +1,6 @@
 # GodelTech.Extensions.Configuration
 
-# Description
+## Description
 GodelTech.Extensions.Configuration is a .NET library that provides extensions for configuration management.
 
 ## GetProjectPath
