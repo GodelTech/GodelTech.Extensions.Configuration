@@ -9,5 +9,5 @@ This method allows to get project path.
 public static string GetProjectPath(string projectRelativePath, Assembly startupAssembly)
 ```
 
-# License
+## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
